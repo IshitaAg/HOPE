@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hope/splash/splashScreen.dart';
-
+import 'auth/languageScreen.dart';
 import 'auth/registerScreen.dart';
 
 void main() async{
@@ -25,7 +24,7 @@ class InfoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: LanguageScreen(),
     );
   }
 }
