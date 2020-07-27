@@ -22,37 +22,39 @@ class SplashScreenState extends State<SplashScreen> {
           ),
         ),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                 decoration: BoxDecoration(
-                   shape: BoxShape.rectangle,
-                   borderRadius: BorderRadius.circular(18.0),
-                   border: Border.all(
-                     color:  AppColors.colorWhite,
-                     width: 3.0,
-                   )
+          child:Container(
+      child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                   decoration: BoxDecoration(
+                     shape: BoxShape.rectangle,
+                     borderRadius: BorderRadius.circular(18.0),
+                     border: Border.all(
+                       color:  AppColors.colorWhite,
+                       width: 3.0,
+                     )
+                   ),
+                   child: Padding(
+                     padding: const EdgeInsets.fromLTRB(16.0, 1.0, 16.0, 1.0),
+                     child: Text(
+                       appName,
+                       style: appThemeData.textTheme.headline1,
+                       ),
+                   ),
                  ),
-                 child: Padding(
-                   padding: const EdgeInsets.all(4.0),
-                   child: Text(
-                     appName,
-                     style: appThemeData.textTheme.title,
-                     ),
-                 ),
-               ),
 
-               Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Text(
-                     appTag,
-                     style: appThemeData.textTheme.subtitle,
-                     ),
-               )
-            ],
-          ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Text(
+                       appTag,
+                       style: appThemeData.textTheme.headline2,
+                       ),
+                 )
+              ],
+            ),
+    ),
         ),
       ),
     );
