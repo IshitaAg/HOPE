@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "246577488556",
+    "firebase_url": "https://hope-54586.firebaseio.com",
+    "project_id": "hope-54586",
+    "storage_bucket": "hope-54586.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246577488556:android:a9ad27a00baee4fcbc7509",
+        "android_client_info": {
+          "package_name": "com.example.hope"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246577488556-1to89v3kpkhc8ocm2o15c679fhdenu8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnMCNPo_BPBn5zqqLKSJPWJkj2KdQbaYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246577488556-1to89v3kpkhc8ocm2o15c679fhdenu8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
