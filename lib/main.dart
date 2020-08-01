@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,18 +19,23 @@ void main() async {
   //Crashlytics.instance.enableInDevMode = false;
   //FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
-  runZoned(() async {
-    final prefs = await SharedPreferences.getInstance();
-    final analytics = FirebaseAnalytics();
-    final auth = FirebaseAuth.instance;
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    final appRepository = AppRepository(sharedPreferences: prefs,firebaseAuth: auth);
-    runApp(InfoApp(
-      auth: auth,
-      analytics: analytics,
-      appRepository: appRepository,
-    ));
-  },/* onError: Crashlytics.instance.recordError*/);
+  runZoned(
+    () async {
+      final prefs = await SharedPreferences.getInstance();
+      final analytics = FirebaseAnalytics();
+      final auth = FirebaseAuth.instance;
+      final firestore = Firestore.instance;
+      await SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitUp]);
+      final appRepository = AppRepository(
+          sharedPreferences: prefs, firebaseAuth: auth, firestore: firestore);
+      runApp(InfoApp(
+        auth: auth,
+        analytics: analytics,
+        appRepository: appRepository,
+      ));
+    }, /* onError: Crashlytics.instance.recordError*/
+  );
 }
 
 class InfoApp extends StatelessWidget {
@@ -46,22 +52,25 @@ class InfoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'HOPE',
-      home: Provider.value(value: appRepository,child: HomeScreen() /*authRepository.handleAuth()*/,),
-      routes: {
-        '/home':(context){
-          return HomeScreen();
+    return Provider.value(
+      value: appRepository,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'HOPE',
+        home: HomeScreen(),//TODO: be changed to appRepository.handleAuth()
+        routes: {
+          '/home': (context) {
+            return HomeScreen();
+          },
+          '/language': (context) {
+            return LanguageScreen();
+          },
+          '/register': (context) {
+            return RegisterScreen();
+          }
         },
-        '/language': (context) {
-          return Provider.value(value: appRepository,child: LanguageScreen(),);
-        },
-        '/register': (context) {
-          return Provider.value(value: appRepository,child: RegisterScreen(),);
-        }
-      },
-      navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
+        navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
+      ),
     );
   }
 }

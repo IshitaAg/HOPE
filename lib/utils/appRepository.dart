@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hope/auth/registerScreen.dart';
@@ -10,12 +11,15 @@ class AppRepository{
    
    AppRepository({
      @required SharedPreferences sharedPreferences,
-     @required FirebaseAuth firebaseAuth
+     @required FirebaseAuth firebaseAuth,
+     @required Firestore firestore
    }) : this.prefs = sharedPreferences,
-        this.auth=firebaseAuth;
+        this.auth=firebaseAuth,
+        this.firestore = firestore;
 
   final SharedPreferences prefs;
   final FirebaseAuth auth;
+  final Firestore firestore;
 
   //checks if the user is already logged-in or not
   handleAuth(){
@@ -42,7 +46,7 @@ class AppRepository{
   setLanguage(String language) async{
       await  prefs.setString(sharedPreferences.language,language);
   }
-
   
+
 
 }

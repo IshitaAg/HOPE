@@ -44,3 +44,13 @@ final buttonThemeData = ThemeData(textTheme: TextTheme(
 
   ),
 ));
+
+final categoryThemeData = ThemeData(textTheme: TextTheme(
+  headline1: TextStyle(
+    fontFamily: 'Nunito Sans',
+    fontSize: 14.0,
+    letterSpacing: 0.7,
+    color: AppColors.colorBlack,
+    fontWeight: FontWeight.w900
+  ),
+));
