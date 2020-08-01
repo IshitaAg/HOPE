@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hope/auth/authRepository.dart';
+import 'package:hope/utils/appRepository.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appThemes.dart';
 import 'package:hope/utils/strings.dart';
@@ -9,7 +9,7 @@ class LanguageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final repo = Provider.of<AuthRepository>(context);
+    final repo = Provider.of<AppRepository>(context);
     return WillPopScope(
       onWillPop: () async => false,
       child: Container(

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hope/auth/authRepository.dart';
+import 'package:hope/utils/appRepository.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appThemes.dart';
 import 'package:hope/utils/strings.dart';
@@ -160,7 +160,7 @@ class RegistrationFormState extends State<RegistrationForm> {
             //Create Account Button
             InkWell(
               onTap: () async {
-                final repo = Provider.of<AuthRepository>(context);
+                final repo = Provider.of<AppRepository>(context);
                   repo.auth.verifyPhoneNumber(
                   phoneNumber: '+91$contact',
                   timeout: const Duration(seconds: 30),

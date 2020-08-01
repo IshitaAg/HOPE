@@ -6,9 +6,9 @@ import 'package:hope/utils/sharedPreferences.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthRepository{
+class AppRepository{
    
-   AuthRepository({
+   AppRepository({
      @required SharedPreferences sharedPreferences,
      @required FirebaseAuth firebaseAuth
    }) : this.prefs = sharedPreferences,
@@ -38,8 +38,11 @@ class AuthRepository{
        FirebaseAuth.instance.signInWithCredential(authCredential);
   }
 
+  //set language for the whole application
   setLanguage(String language) async{
       await  prefs.setString(sharedPreferences.language,language);
   }
+
+  
 
 }

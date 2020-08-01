@@ -4,7 +4,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hope/auth/authRepository.dart';
+import 'package:hope/utils/appRepository.dart';
 import 'package:hope/home/homeScreen.dart';
 import 'package:hope/utils/appThemes.dart';
 import 'package:provider/provider.dart';
@@ -23,11 +23,11 @@ void main() async {
     final analytics = FirebaseAnalytics();
     final auth = FirebaseAuth.instance;
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    final authRepository = AuthRepository(sharedPreferences: prefs,firebaseAuth: auth);
+    final appRepository = AppRepository(sharedPreferences: prefs,firebaseAuth: auth);
     runApp(InfoApp(
       auth: auth,
       analytics: analytics,
-      authRepository: authRepository,
+      appRepository: appRepository,
     ));
   },/* onError: Crashlytics.instance.recordError*/);
 }
@@ -36,29 +36,29 @@ class InfoApp extends StatelessWidget {
   InfoApp({
     @required this.auth,
     @required this.analytics,
-    @required this.authRepository,
+    @required this.appRepository,
     Key key,
   }) : super(key: key);
 
   final FirebaseAuth auth;
   final FirebaseAnalytics analytics;
-  final AuthRepository authRepository;
+  final AppRepository appRepository;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HOPE',
-      home: Provider.value(value: authRepository,child: HomeScreen() /*authRepository.handleAuth()*/,),
+      home: Provider.value(value: appRepository,child: HomeScreen() /*authRepository.handleAuth()*/,),
       routes: {
         '/home':(context){
           return HomeScreen();
         },
         '/language': (context) {
-          return Provider.value(value: authRepository,child: LanguageScreen(),);
+          return Provider.value(value: appRepository,child: LanguageScreen(),);
         },
         '/register': (context) {
-          return Provider.value(value: authRepository,child: RegisterScreen(),);
+          return Provider.value(value: appRepository,child: RegisterScreen(),);
         }
       },
       navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
