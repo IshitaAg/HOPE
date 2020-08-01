@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
                         String category =
-                            snapshot.data.documents[index]['name'];
+                            snapshot.data.documents[index].documentID;
                         return GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(context, '/info',
