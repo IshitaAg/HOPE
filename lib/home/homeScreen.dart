@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hope/description/infoTypeScreen.dart';
+import 'package:hope/description/screenArguments.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appRepository.dart';
 import 'package:hope/utils/appThemes.dart';
@@ -47,12 +49,19 @@ class HomeScreen extends StatelessWidget {
                 );
               default:
                 return Container(
-                  margin: EdgeInsets.only(top:16.0),
+                  margin: EdgeInsets.only(top: 16.0),
                   child: ListView.builder(
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                            categoryName: snapshot.data.documents[index]['name']);
+                        String category =
+                            snapshot.data.documents[index]['name'];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/info',
+                                arguments: ScreenArguments(category));
+                          },
+                          child: ListTile(categoryName: category),
+                        );
                       }),
                 );
             }
@@ -72,7 +81,7 @@ class ListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(12.0,4.0,4.0,12.0),
+      margin: EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 8.0),
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: AppColors.colorWhite,

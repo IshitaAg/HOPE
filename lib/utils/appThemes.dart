@@ -53,4 +53,12 @@ final categoryThemeData = ThemeData(textTheme: TextTheme(
     color: AppColors.colorBlack,
     fontWeight: FontWeight.w900
   ),
+
+  subtitle1: TextStyle(
+    fontFamily: 'Montserrat',
+    fontSize: 13.0,
+    letterSpacing: 1.3,
+    fontWeight: FontWeight.w600,
+    color: AppColors.colorWhite
+  ),
 ));

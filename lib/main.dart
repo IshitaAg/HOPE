@@ -5,6 +5,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hope/description/infoTypeScreen.dart';
 import 'package:hope/utils/appRepository.dart';
 import 'package:hope/home/homeScreen.dart';
 import 'package:hope/utils/appThemes.dart';
@@ -67,6 +68,9 @@ class InfoApp extends StatelessWidget {
           },
           '/register': (context) {
             return RegisterScreen();
+          },
+          '/info':(context){
+            return InfoTypeScreen();
           }
         },
         navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
