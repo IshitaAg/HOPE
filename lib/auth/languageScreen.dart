@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hope/auth/authRepository.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appThemes.dart';
 import 'package:hope/utils/strings.dart';
+import 'package:provider/provider.dart';
 
 class LanguageScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    final repo = Provider.of<AuthRepository>(context);
     return WillPopScope(
       onWillPop: () async => false,
       child: Container(
@@ -97,7 +100,8 @@ class LanguageScreen extends StatelessWidget {
                               Expanded(
                                 child: InkWell(
                                   onTap: () async {
-                                    //set language in shared preferences as Eng and head to home screen
+                                    repo.setLanguage('English');
+                                    Navigator.of(context).pushReplacementNamed('/home');
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(
@@ -154,7 +158,8 @@ class LanguageScreen extends StatelessWidget {
                               Expanded(
                                 child: InkWell(
                                   onTap: () async {
-                                    //set language in shared preferences as Eng and head to home screen
+                                    repo.setLanguage('English');
+                                    Navigator.of(context).pushReplacementNamed('/home');
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(

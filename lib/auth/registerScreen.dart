@@ -15,94 +15,94 @@ class RegisterScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         resizeToAvoidBottomPadding: false,
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: AlignmentDirectional.topCenter,
-                end: AlignmentDirectional.bottomCenter,
-                colors: [AppColors.gradientGreen, AppColors.gradientBlue],
+        begin: AlignmentDirectional.topCenter,
+        end: AlignmentDirectional.bottomCenter,
+        colors: [AppColors.gradientGreen, AppColors.gradientBlue],
               ),
             ),
+          child: SingleChildScrollView(
             child: Container(
-              margin: const EdgeInsets.fromLTRB(48.0, 130.0, 48.0, 220.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(18.0),
-                      border: Border.all(
-                        color: AppColors.colorWhite,
-                        width: 2.0,
-                      ),
-                    ),
-                    padding: const EdgeInsets.fromLTRB(16.0, 1.0, 16.0, 1.0),
-                    child: Text(
-                      appName,
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 32.0,
-                          color: AppColors.colorWhite,
-                          fontWeight: FontWeight.normal,
-                          decoration: TextDecoration.none),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      appTag,
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 8.0,
-                          color: AppColors.colorWhite,
-                          fontWeight: FontWeight.w100,
-                          decoration: TextDecoration.none),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.fromLTRB(0.0, 32.0, 0.0, 0.0),
-                    padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: AppColors.colorWhite,
-                        borderRadius: BorderRadius.circular(9.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.colorDarkerGrey,
-                            offset: Offset(0.0, 3.0),
-                            blurRadius: 6.0,
-                          ),
-                        ]),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          margin:
-                              const EdgeInsets.fromLTRB(4.0, 16.0, 4.0, 4.0),
-                          child: Text(
-                            register,
-                            style: appThemeData.textTheme.subtitle1,
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(2.0),
-                          child: Text(
-                            registerTag,
-                            style: appThemeData.textTheme.caption,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(16.0, 32.0, 8.0, 16.0),
-                          child: RegistrationForm(),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                margin: const EdgeInsets.fromLTRB(48.0, 130.0, 48.0, 220.0),
+                child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(18.0),
+              border: Border.all(
+                color: AppColors.colorWhite,
+                width: 2.0,
               ),
             ),
+            padding: const EdgeInsets.fromLTRB(16.0, 1.0, 16.0, 1.0),
+            child: Text(
+              appName,
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 32.0,
+                  color: AppColors.colorWhite,
+                  fontWeight: FontWeight.normal,
+                  decoration: TextDecoration.none),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              appTag,
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 8.0,
+                  color: AppColors.colorWhite,
+                  fontWeight: FontWeight.w100,
+                  decoration: TextDecoration.none),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(0.0, 32.0, 0.0, 0.0),
+            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+            decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: AppColors.colorWhite,
+                borderRadius: BorderRadius.circular(9.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.colorDarkerGrey,
+                    offset: Offset(0.0, 3.0),
+                    blurRadius: 6.0,
+                  ),
+                ]),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin:
+                      const EdgeInsets.fromLTRB(4.0, 16.0, 4.0, 4.0),
+                  child: Text(
+                    register,
+                    style: appThemeData.textTheme.subtitle1,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(2.0),
+                  child: Text(
+                    registerTag,
+                    style: appThemeData.textTheme.caption,
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(16.0, 32.0, 8.0, 16.0),
+                  child: RegistrationForm(),
+                ),
+              ],
+            ),
+          )
+        ],
+                ),
+              ),
           ),
         ),
       ),
@@ -119,7 +119,6 @@ class RegistrationFormState extends State<RegistrationForm> {
   final _formKey = GlobalKey<FormState>();
   String contact;
   String verificationId;
-  FirebaseAuth _auth;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -144,10 +143,10 @@ class RegistrationFormState extends State<RegistrationForm> {
               margin: EdgeInsets.fromLTRB(0.0, 32.0, 0.0, 0.0),
               child: TextFormField(
                 decoration: InputDecoration(
-                    labelText: contact,
-                    contentPadding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 0.0),
-                    labelStyle: appThemeData.textTheme.subtitle2,
-                    ),
+                  labelText: contact,
+                  contentPadding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 0.0),
+                  labelStyle: appThemeData.textTheme.subtitle2,
+                ),
                 autovalidate: true,
                 keyboardType: TextInputType.phone,
                 onChanged: (number) {
@@ -160,17 +159,16 @@ class RegistrationFormState extends State<RegistrationForm> {
 
             //Create Account Button
             InkWell(
-              autofocus: true,
               onTap: () async {
-                _auth = FirebaseAuth.instance;
-                _auth.verifyPhoneNumber(
+                final repo = Provider.of<AuthRepository>(context);
+                  repo.auth.verifyPhoneNumber(
                   phoneNumber: '+91$contact',
                   timeout: const Duration(seconds: 30),
-                  verificationCompleted: (AuthCredential authCredential) {
-                    AuthRepository().signIn(authCredential);
+                  verificationCompleted: (AuthCredential authCredential){
+                    repo.signIn(authCredential);
                     Navigator.of(context).pushReplacementNamed('/language');
                   },
-                  verificationFailed: (AuthException e) {},
+                  verificationFailed: (AuthException e) { print('${e.message}');},
                   codeSent: (String verId, [int forceCodeResend]) {
                     setState(() {
                       verificationId = verId;

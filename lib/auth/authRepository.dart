@@ -2,18 +2,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hope/auth/registerScreen.dart';
 import 'package:hope/home/homeScreen.dart';
+import 'package:hope/utils/sharedPreferences.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepository{
    
-  /* AuthRepository({
+   AuthRepository({
      @required SharedPreferences sharedPreferences,
      @required FirebaseAuth firebaseAuth
    }) : this.prefs = sharedPreferences,
         this.auth=firebaseAuth;
 
   final SharedPreferences prefs;
-  final FirebaseAuth auth;*/
+  final FirebaseAuth auth;
 
   //checks if the user is already logged-in or not
   handleAuth(){
@@ -34,6 +36,10 @@ class AuthRepository{
   signIn(AuthCredential authCredential){
 
        FirebaseAuth.instance.signInWithCredential(authCredential);
+  }
+
+  setLanguage(String language) async{
+      await  prefs.setString(sharedPreferences.language,language);
   }
 
 }

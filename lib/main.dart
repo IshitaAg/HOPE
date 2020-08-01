@@ -23,7 +23,7 @@ void main() async {
     final analytics = FirebaseAnalytics();
     final auth = FirebaseAuth.instance;
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    final authRepository = AuthRepository();
+    final authRepository = AuthRepository(sharedPreferences: prefs,firebaseAuth: auth);
     runApp(InfoApp(
       auth: auth,
       analytics: analytics,
@@ -49,16 +49,16 @@ class InfoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HOPE',
-      home: authRepository.handleAuth(),
+      home: Provider.value(value: authRepository,child: HomeScreen() /*authRepository.handleAuth()*/,),
       routes: {
         '/home':(context){
           return HomeScreen();
         },
         '/language': (context) {
-          return LanguageScreen();
+          return Provider.value(value: authRepository,child: LanguageScreen(),);
         },
-        'register': (context) {
-          return RegisterScreen();
+        '/register': (context) {
+          return Provider.value(value: authRepository,child: RegisterScreen(),);
         }
       },
       navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
