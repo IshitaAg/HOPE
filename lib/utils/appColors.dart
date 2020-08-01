@@ -13,4 +13,5 @@ class AppColors{
    static const colorDarkerGrey = Color(0xFF9A9797);
    static const colorBlue = Color(0xFF00B7C9);
    static const colorGreen = Color(0xFF02D482);
+   static const colorAppBar = Color(0xFF01C99F);
 }
