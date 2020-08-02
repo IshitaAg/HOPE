@@ -7,11 +7,13 @@ import 'package:hope/utils/appThemes.dart';
 import 'package:hope/utils/sharedPreferences.dart';
 import 'package:hope/utils/strings.dart';
 import 'package:provider/provider.dart';
+import 'package:translator/translator.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final repo = Provider.of<AppRepository>(context);
+    print(PrefKeys.language);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorAppBar,
@@ -38,8 +40,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: StreamBuilder(
-          stream:
-              repo.firestore.collection(sharedPreferences.language).snapshots(),
+          stream: repo.firestore.collection(PrefKeys.language).snapshots(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
@@ -55,13 +56,23 @@ class HomeScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         String category =
                             snapshot.data.documents[index].documentID;
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/info',
-                                arguments: ScreenArguments(category));
-                          },
-                          child: _ListTile(categoryName: category),
-                        );
+                        if (PrefKeys.language == 'English') {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/info',
+                                  arguments: ScreenArguments(category));
+                            },
+                            child: _ListTile(categoryName: category,image: category,),
+                          );
+                        } else {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/info',
+                                  arguments: ScreenArguments(category));
+                            },
+                            child: _ListTile(categoryName: category,image: snapshot.data.documents[index]['name'],),
+                          );
+                        }
                       }),
                 );
             }
@@ -73,10 +84,12 @@ class HomeScreen extends StatelessWidget {
 class _ListTile extends StatelessWidget {
   _ListTile({
     @required this.categoryName,
+    @required this.image,
     Key key,
   }) : super(key: key);
 
   final String categoryName;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +112,7 @@ class _ListTile extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: Image.asset(
-            'assets/images/$categoryName.png',
+            'assets/images/$image.png',
             height: 60.0,
             width: 60.0,
           ),
