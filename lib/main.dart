@@ -5,7 +5,13 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hope/description/MythsScreen.dart';
+import 'package:hope/description/alarmingFactsScreen.dart';
+import 'package:hope/description/basicInformationScreen.dart';
+import 'package:hope/description/faqScreen.dart';
+import 'package:hope/description/helplineScreen.dart';
 import 'package:hope/description/infoTypeScreen.dart';
+import 'package:hope/description/resourcesScreen.dart';
 import 'package:hope/utils/appRepository.dart';
 import 'package:hope/home/homeScreen.dart';
 import 'package:hope/utils/appThemes.dart';
@@ -58,7 +64,7 @@ class InfoApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'HOPE',
-        home: HomeScreen(),//TODO: be changed to appRepository.handleAuth()
+        home: appRepository.handleAuth(),
         routes: {
           '/home': (context) {
             return HomeScreen();
@@ -71,6 +77,24 @@ class InfoApp extends StatelessWidget {
           },
           '/info':(context){
             return InfoTypeScreen();
+          },
+          '/Basic Information':(context){
+            return BasicInformationScreen();
+          },
+          '/Alarming Facts':(context){
+            return AlarmingFactsScreen();
+          },
+          '/Helpline':(context){
+            return HelplineScreen();
+          },
+          '/Myths & misconceptions':(context){
+            return MythsScreen();
+          },
+          '/Resources':(context){
+            return ResourcesScreen();
+          },
+          '/Frequently Asked Questions':(context){
+            return FaqScreen();
           }
         },
         navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
