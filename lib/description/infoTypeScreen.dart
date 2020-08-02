@@ -34,7 +34,7 @@ class InfoTypeScreen extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: repo.firestore
-                .collection(sharedPreferences.language)
+                .collection(PrefKeys.language)
                 .document(args.title)
                 .collection('Info')
                 .snapshots(),
@@ -47,18 +47,20 @@ class InfoTypeScreen extends StatelessWidget {
                   );
                 default:
                   return Container(
-                      margin: EdgeInsets.only(top: 16.0),
+                      margin: EdgeInsets.only(top: 48.0),
                       child: GridView.builder(
-                        
+                          shrinkWrap: true,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisSpacing: 2.0,
-                                  crossAxisCount: 2),
+                                  crossAxisSpacing: 2.0, crossAxisCount: 2),
                           itemCount: snapshot.data.documents.length,
                           itemBuilder: (context, index) {
                             return GestureDetector(
-                              onTap: (){
-
+                              onTap: () async {
+                                Navigator.pushNamed(context,
+                                    '/${snapshot.data.documents[index].documentID}',
+                                    arguments: ScreenArguments(snapshot
+                                        .data.documents[index].documentID));
                               },
                               child: _GridListTile(
                                 category:
@@ -84,7 +86,7 @@ class _GridListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
+      margin: EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: AppColors.infoColors[index],
         shape: BoxShape.rectangle,
@@ -97,7 +99,9 @@ class _GridListTile extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
+      child: Container(
+        alignment: AlignmentDirectional.bottomStart,
+        margin: EdgeInsets.only(left: 12.0, bottom: 16.0, right: 12.0),
         child: Text(
           category,
           style: categoryThemeData.textTheme.headline2,
