@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                             Navigator.pushNamed(context, '/info',
                                 arguments: ScreenArguments(category));
                           },
-                          child: ListTile(categoryName: category),
+                          child: _ListTile(categoryName: category),
                         );
                       }),
                 );
@@ -70,8 +70,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class ListTile extends StatelessWidget {
-  ListTile({
+class _ListTile extends StatelessWidget {
+  _ListTile({
     @required this.categoryName,
     Key key,
   }) : super(key: key);
