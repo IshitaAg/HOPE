@@ -64,8 +64,9 @@ final categoryThemeData = ThemeData(textTheme: TextTheme(
   headline2: TextStyle(
     fontFamily: 'Montserrat',
     color: AppColors.colorWhite,
-    fontWeight: FontWeight.w600,
-    fontSize: 13.0,
-    letterSpacing: 1.3
+    fontWeight: FontWeight.w700,
+    fontSize: 14.0,
+    letterSpacing: 1.3,
+    
   )
 ));

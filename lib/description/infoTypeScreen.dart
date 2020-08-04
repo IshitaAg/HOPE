@@ -59,8 +59,7 @@ class InfoTypeScreen extends StatelessWidget {
                               onTap: () async {
                                 Navigator.pushNamed(context,
                                     '/${snapshot.data.documents[index].documentID}',
-                                    arguments: ScreenArguments(snapshot
-                                        .data.documents[index].documentID));
+                                    arguments: ScreenArguments(args.title));
                               },
                               child: _GridListTile(
                                 category:
