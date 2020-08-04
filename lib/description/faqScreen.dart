@@ -79,32 +79,47 @@ class _FaqTile extends StatelessWidget {
               BoxConstraints.tightFor(width: MediaQuery.of(context).size.width),
           width: MediaQuery.of(context).size.width,
           margin: EdgeInsets.all(8.0),
-          child: Row(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(right: 8.0),
-                alignment: AlignmentDirectional.center,
-                child: Text(
-                  ques,
-                  softWrap: true,
-                  style: TextStyle(
-                      color: AppColors.colorAppBar,
-                      fontFamily: 'Nunito Sans',
-                      fontSize: 34.0,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.34),
-                ),
+          child: Column(
+            children: [
+              Row(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(right: 8.0),
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                      ques,
+                      softWrap: true,
+                      style: TextStyle(
+                          color: AppColors.colorAppBar,
+                          fontFamily: 'Nunito Sans',
+                          fontSize: 34.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.34),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      faq.header,
+                      softWrap: true,
+                      style: TextStyle(
+                          color: AppColors.colorAppBar,
+                          fontFamily: 'Nunito Sans',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.75),
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Text(
-                  faq.header,
-                  softWrap: true,
-                  style: TextStyle(
-                      color: AppColors.colorAppBar,
-                      fontFamily: 'Nunito Sans',
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.75),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0,16.0,8.0,8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(19.0),
+                  child: Divider(
+                    color: AppColors.colorDarkerGrey,
+                    height: 3.0,
+                    thickness: 3.0,
+                  ),
                 ),
               ),
             ],
@@ -193,6 +208,17 @@ class _FaqTile extends StatelessWidget {
             ],
           ),
         ),
+         Padding(
+                padding: const EdgeInsets.fromLTRB(8.0,16.0,8.0,8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(19.0),
+                  child: Divider(
+                    color: AppColors.colorDarkerGrey,
+                    height: 3.0,
+                    thickness: 3.0,
+                  ),
+                ),
+              ),
       ],
     );
   }
