@@ -4,7 +4,6 @@ import 'package:hope/description/screenArguments.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appRepository.dart';
 import 'package:hope/utils/appThemes.dart';
-import 'package:hope/utils/customWidgets/infoTypeWIdget.dart';
 import 'package:hope/utils/sharedPreferences.dart';
 import 'package:hope/utils/strings.dart';
 import 'package:provider/provider.dart';
