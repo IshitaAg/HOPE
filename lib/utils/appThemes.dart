@@ -62,7 +62,7 @@ final categoryThemeData = ThemeData(
         headline2: TextStyle(
           fontFamily: 'Montserrat',
           color: AppColors.colorWhite,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           fontSize: 14.0,
           letterSpacing: 1.3,
         )));
@@ -76,11 +76,16 @@ final infoThemeData = ThemeData(
         letterSpacing: 2.0,
         fontWeight: FontWeight.w800),
     subtitle1: TextStyle(
-      color: AppColors.colorAppBar,
-      fontFamily: 'Nunito Sans',
-      fontSize: 14.0,
-      letterSpacing: 0.14,
-      fontWeight: FontWeight.w600
-    ),    
+        color: AppColors.colorAppBar,
+        fontFamily: 'Nunito Sans',
+        fontSize: 14.0,
+        letterSpacing: 0.14,
+        fontWeight: FontWeight.w600),
+    subtitle2: TextStyle(
+        fontFamily: 'Nunito Sans',
+        fontSize: 20.0,
+        fontWeight: FontWeight.w800,
+        letterSpacing: 0.15,
+        color: AppColors.colorBlack),
   ),
 );
