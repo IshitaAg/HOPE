@@ -31,7 +31,7 @@ class FaqScreen extends StatelessWidget {
       ),
       body: StreamBuilder(
           stream: repo.firestore
-              .collection(PrefKeys.language)
+              .collection(repo.prefs.getString(PrefKeys.language))
               .document(args.title)
               .collection('Info')
               .document(faq)

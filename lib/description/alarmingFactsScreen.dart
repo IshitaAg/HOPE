@@ -43,7 +43,7 @@ class AlarmingFactsScreen extends StatelessWidget {
             ),
             child: StreamBuilder(
                 stream: repo.firestore
-                    .collection(PrefKeys.language)
+                    .collection(repo.prefs.getString(PrefKeys.language))
                     .document(args.title)
                     .collection('Info')
                     .document(alarmingFacts)

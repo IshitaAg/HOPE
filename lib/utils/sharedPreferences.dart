@@ -1,7 +1,7 @@
-class sharedPreferences{
+class PrefKeys{
 
-  sharedPreferences._();
+  PrefKeys._();
   
-  static const language = 'English';
+  static const language = 'LANGUAGE';
 
 }

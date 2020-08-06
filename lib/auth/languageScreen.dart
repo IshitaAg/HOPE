@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hope/utils/appRepository.dart';
 import 'package:hope/utils/appColors.dart';
 import 'package:hope/utils/appThemes.dart';
+import 'package:hope/utils/sharedPreferences.dart';
 import 'package:hope/utils/strings.dart';
 import 'package:provider/provider.dart';
 
@@ -101,7 +102,7 @@ class LanguageScreen extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () async {
-                                      repo.setLanguage('Hindi');
+                                      await repo.setLanguage('Hindi');
                                       Navigator.of(context)
                                           .pushReplacementNamed('/home');
                                     },
@@ -163,7 +164,7 @@ class LanguageScreen extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () async {
-                                      repo.setLanguage('English');
+                                      await repo.setLanguage('English');
                                       Navigator.of(context)
                                           .pushReplacementNamed('/home');
                                     },

@@ -13,7 +13,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final repo = Provider.of<AppRepository>(context);
-    print(PrefKeys.language);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorAppBar,
@@ -40,7 +39,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: StreamBuilder(
-          stream: repo.firestore.collection(PrefKeys.language).snapshots(),
+          stream: repo.firestore.collection(repo.prefs.getString(PrefKeys.language)).snapshots(),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
@@ -56,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         String category =
                             snapshot.data.documents[index].documentID;
-                        if (PrefKeys.language == 'English') {
+                        if (repo.prefs.getString(repo.prefs.getString(PrefKeys.language)) == 'English') {
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context, '/info',
