@@ -45,7 +45,7 @@ class BasicInformationScreen extends StatelessWidget {
                     .collection(repo.prefs.getString(PrefKeys.language))
                     .document(args.title)
                     .collection('Info')
-                    .document(basicInfo)
+                    .document(args.type)
                     .collection('Details')
                     .snapshots(),
                 builder: (context, snapshot) {
@@ -110,7 +110,7 @@ class BasicInformationScreen extends StatelessWidget {
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * .04),
             alignment: AlignmentDirectional.topCenter,
             child: Image.asset(
-              'assets/images/${args.title}.png',
+              'assets/images/${args.titleHindi}.png',
               height: 160.0,
               width: 160.0,
             ),

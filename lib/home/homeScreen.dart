@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context, '/info',
-                                  arguments: ScreenArguments(category));
+                                  arguments: ScreenArguments(category,snapshot.data.documents[index]['name'],'info'));
                             },
                             child: _ListTile(categoryName: category,image: category,),
                           );
@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context, '/info',
-                                  arguments: ScreenArguments(category));
+                                  arguments: ScreenArguments(category,snapshot.data.documents[index]['name'],'info'));
                             },
                             child: _ListTile(categoryName: category,image: snapshot.data.documents[index]['name'],),
                           );

@@ -46,7 +46,7 @@ class AlarmingFactsScreen extends StatelessWidget {
                     .collection(repo.prefs.getString(PrefKeys.language))
                     .document(args.title)
                     .collection('Info')
-                    .document(alarmingFacts)
+                    .document(args.type)
                     .collection('Details')
                     .snapshots(),
                 builder: (context, snapshot) {
@@ -66,7 +66,7 @@ class AlarmingFactsScreen extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(
                                   24.0, 16.0, 24.0, 16.0),
                               child: Text(
-                                alarmingFacts.toUpperCase(),
+                                args.type.toUpperCase(),
                                 style: infoThemeData.textTheme.headline1,
                               ),
                             ),
@@ -111,7 +111,7 @@ class AlarmingFactsScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .04),
             alignment: AlignmentDirectional.topCenter,
             child: Image.asset(
-              'assets/images/${args.title}.png',
+              'assets/images/${args.titleHindi}.png',
               height: 160.0,
               width: 160.0,
             ),

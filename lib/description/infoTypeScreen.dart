@@ -11,6 +11,7 @@ class InfoTypeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     final repo = Provider.of<AppRepository>(context);
+    final lang = repo.prefs.getString(PrefKeys.language);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.colorAppBar,
@@ -34,7 +35,7 @@ class InfoTypeScreen extends StatelessWidget {
         ),
         body: StreamBuilder(
             stream: repo.firestore
-                .collection(repo.prefs.getString(PrefKeys.language))
+                .collection(lang)
                 .document(args.title)
                 .collection('Info')
                 .snapshots(),
@@ -55,15 +56,23 @@ class InfoTypeScreen extends StatelessWidget {
                                   crossAxisSpacing: 2.0, crossAxisCount: 2),
                           itemCount: snapshot.data.documents.length,
                           itemBuilder: (context, index) {
+                            var path =snapshot.data.documents[index].documentID;
                             return GestureDetector(
                               onTap: () async {
-                                Navigator.pushNamed(context,
-                                    '/${snapshot.data.documents[index].documentID}',
-                                    arguments: ScreenArguments(args.title));
+                                if(lang=='English'){
+                                  Navigator.pushNamed(context,
+                                    path,
+                                    arguments: ScreenArguments(args.title,args.titleHindi,path));
+                                }
+                                else{
+                                  Navigator.pushNamed(context,
+                                    '/${snapshot.data.documents[index]['f']}',
+                                    arguments: ScreenArguments(args.title,args.titleHindi,snapshot.data.documents[index].documentID));
+                                }
                               },
                               child: _GridListTile(
                                 category:
-                                    snapshot.data.documents[index].documentID,
+                                    path,
                                 index: index,
                               ),
                             );

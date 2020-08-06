@@ -36,7 +36,7 @@ class AppRepository {
             return SplashScreen();
           default:
             if (snapshot.hasData) {
-              return LanguageScreen();
+              return HomeScreen();
             } else {
               return RegisterScreen();
             }
@@ -51,15 +51,8 @@ class AppRepository {
   }
 
   //set language for the whole application
-  setLanguage(String lang) async{
-    print('glang: $lang');
+  setLanguage(String lang) async {
     await prefs.setString(PrefKeys.language, lang);
-    print('lang: ${PrefKeys.language}');
   }
 
-  getTranslation(String name) async {
-    final translator = GoogleTranslator();
-    var translation = await translator.translate(name, to: 'en');
-    return translation;
-  }
 }
