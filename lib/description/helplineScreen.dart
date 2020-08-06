@@ -33,7 +33,7 @@ class HelplineScreen extends StatelessWidget {
             .collection(repo.prefs.getString(PrefKeys.language))
             .document(args.title)
             .collection('Info')
-            .document(helpline)
+            .document(args.type)
             .collection('Details')
             .snapshots(),
         builder: (context, snapshot) {
